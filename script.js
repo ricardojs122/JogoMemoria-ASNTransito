@@ -1,4 +1,4 @@
-const cards = ["B", "A", "E", "D", "D", "G", "F", "C", "H", "G", "B", "H"];
+const cards = ["A", "A", "E", "E", "D", "D", "C", "C", "H", "G", "G", "H"];
 let flippedCards = [];
 let matches = 0;
 let isFlipping = false;
@@ -15,6 +15,7 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
 
 function startGame(time) {
     clearInterval(timerInterval);

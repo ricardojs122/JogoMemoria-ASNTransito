@@ -7,16 +7,25 @@
     <title>Jogo da Memória</title>
 </head>
 <body>
-    <h1>Jogo da Memória</h1>
-    <div class="game-container">
+    <header>
+        <h1>Jogo da Memória</h1>
+    </header>
+    
+    <main class="game-container">
         <div class="board" id="board"></div>
-    </div>
+    </main>
+    
     <div class="difficulty">
-        <button onclick="startGame(180)">Fácil</button>
-        <button onclick="startGame(120)">Médio</button>
-        <button onclick="startGame(60)">Difícil</button>
+        <button onclick="startGame(90)">Fácil</button>
+        <button onclick="startGame(60)">Médio</button>
+        <button onclick="startGame(45)">Difícil</button>
     </div>
+    
     <div class="timer" id="timer">Tempo restante: <span id="time">0:00</span></div>
+    
+    <footer>
+        <p>&copy; 2023 Seu Site. Todos os direitos reservados.</p>
+    </footer>    
     <script src="script.js"></script>
 </body>
 </html>
