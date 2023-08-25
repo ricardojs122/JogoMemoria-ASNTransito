@@ -1,4 +1,4 @@
-const cards = ["A", "B", "C", "D", "E", "F", "G", "H", "A", "B", "C", "D", "E", "F", "G", "H"];
+const cards = ["B", "A", "E", "D", "D", "G", "F", "C", "H", "G", "B", "H"];
 let flippedCards = [];
 let matches = 0;
 let isFlipping = false;
@@ -37,7 +37,7 @@ function createBoard() {
 }
 
 function handleCardClick() {
-    if (isFlipping || flippedCards.includes(this)) {
+    if (isFlipping || flippedCards.includes(this) || flippedCards.length === 2) {
         return;
     }
 
