@@ -1,3 +1,4 @@
+/*Fiz algumas coisas meio bagunçada qualquer cois só perguntar que tento explicar melhor */
 const cards = ["A", "A", "E", "E", "D", "D", "C", "C", "H", "G", "G", "H"];
 let flippedCards = [];
 let matches = 0;
@@ -63,7 +64,7 @@ function checkForMatch() {
         matches++;
         if (matches === cards.length / 2) {
             clearInterval(timerInterval);
-            alert("Parabéns! Você venceu!");
+            showCustomDialog("Parabéns! Você venceu!");
         }
     } else {
         card1.classList.remove("flipped");
@@ -76,7 +77,7 @@ function checkForMatch() {
 function updateTimer() {
     if (remainingTime <= 0) {
         clearInterval(timerInterval);
-        alert("Tempo esgotado! Tente novamente.");
+        showCustomDialog("Tempo esgotado! Tente novamente.");
     } else {
         remainingTime--;
         const minutes = Math.floor(remainingTime / 60);
@@ -84,3 +85,25 @@ function updateTimer() {
         timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
     }
 }
+
+function showCustomDialog(message) {
+    const dialogContainer = document.createElement("div");
+    dialogContainer.classList.add("custom-dialog");
+    
+    const dialogContent = document.createElement("div");
+    dialogContent.classList.add("custom-dialog-content");
+    dialogContent.textContent = message;
+    
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "Fechar";
+    closeButton.addEventListener("click", () => {
+        document.body.removeChild(dialogContainer);
+        location.reload(); 
+    });
+    
+    dialogContent.appendChild(closeButton);
+    dialogContainer.appendChild(dialogContent);
+    document.body.appendChild(dialogContainer);
+}
+
+

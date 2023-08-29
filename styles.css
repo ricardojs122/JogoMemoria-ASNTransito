@@ -1,3 +1,5 @@
+/*Aqui acho que precisa fazer só uma padronização mas tá legal eu acho. */
+
 body, h1, h2, h3, h4, h5, h6, p, ul, ol {
     margin: 0;
     padding: 0;
@@ -59,75 +61,82 @@ footer {
 .difficulty {
     margin-top: 20px;
 }
-.easy {
-    color: white;
-    background-color: #4CAF50;
+
+.difficulty button {
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
     border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.easy:hover {
-    background-color: #45a049;
-}
-
-.easy:active {
-    transform: scale(0.95);
-}
-.medium {
-    color: white;
-    background-color: #f39c12;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.medium:hover {
-    background-color: #e08e0b;
-}
-
-.medium:active {
-    transform: scale(0.95);
-}
-.hard {
-    color: white;
-    background-color: #e74c3c;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.hard:hover {
-    background-color: #d63b2a;
-}
-
-.hard:active {
-    transform: scale(0.95);
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .timer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 20px;
     font-size: 18px;
-    color: #ffffff;
-    background-color: #2c3e50;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #333;
 }
 
-.timer span {
-    font-size: 24px;
-    margin-left: 10px;
-    color: #27ae60;
+.easy {
+    background-color: #39FF14;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.easy:hover {
+    background-color: #33cc0d;
+    transform: scale(1.05);
+}
+
+.medium {
+    background-color: #f1bc09;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.medium:hover {
+    background-color: #dba308;
+    transform: scale(1.05);
+}
+
+.hard {
+    background-color: #bd162c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hard:hover {
+    background-color: #a31225;
+    transform: scale(1.05);
+}
+.custom-dialog {
+    position: fixed;
+    height: 70px;
+    width: 550px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #ffffff;
+    z-index: 1000;
+  }
+  
+  .custom-dialog-content {
+    text-align: center;
+    background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);
+  }
+  
+  .custom-dialog button {
+    height: 40px;
+    width: 80px;
+    margin-left: 30px;
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    }
