@@ -103,7 +103,7 @@ function flipCard(card) {
         }
     }
 }
-
+//ACHO QUE SEJA ESTA LINHA DE CODIGO ABAIXO QUE ESTÁ COM O PROBLEMA DO BUG DE TRAVAR QUANDO ENCONTRA PAR IGUAIS 
 function checkForMatch() {
     const [card1, card2] = flippedCards;
     const cardImage1 = card1.querySelector("img");
