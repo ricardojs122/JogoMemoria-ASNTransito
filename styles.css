@@ -1,27 +1,25 @@
-/*Aqui acho que precisa fazer só uma padronização mas tá legal eu acho. */
-
 body, h1, h2, h3, h4, h5, h6, p, ul, ol {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);
-    color: #ffffff;
-    background-color: #f0f0f0;
+    background-image: url(./assets/fundo1.jpg);    color: #ffffff;
+    background-color:  rgb(20, 20, 20);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-
 h1 {
     margin-top: 20px;
 }
-
 footer {
-    background-color: #333;
+    background-image: url(.assets/fundo1.jpg);
     color: #fffefe;
     padding: 20px;
     text-align: center;
+    display: none;
 }
 
 .game-container {
@@ -33,15 +31,15 @@ footer {
 
 .board {
     display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: repeat(3, 80px);
+    grid-template-columns: repeat(4, 100px); 
+    grid-template-rows: repeat(3, 100px); 
     gap: 10px;
 }
 
 .card {
     display: block;
-    width: 80px;
-    height: 80px;
+    width: 100px; 
+    height: 100px; 
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -50,12 +48,34 @@ footer {
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease-in-out;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-in-out;
 }
 
+
+.card .card-front,
+.card .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card .card-front img,
+.card .card-back img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+
 .card.flipped {
-    background-color: #3498db;
-    color: #fff;
+    transform: rotateY(180deg);
 }
 
 .difficulty {
@@ -109,6 +129,8 @@ footer {
     background-color: #a31225;
     transform: scale(1.05);
 }
+
+
 .custom-dialog {
     position: fixed;
     height: 70px;
@@ -116,19 +138,20 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);    border: 1px solid #ccc;
+    background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);
+    border: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     color: #ffffff;
     z-index: 1000;
-  }
-  
-  .custom-dialog-content {
+}
+
+.custom-dialog-content {
     text-align: center;
     background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);
-  }
-  
-  .custom-dialog button {
+}
+
+.custom-dialog button {
     height: 40px;
     width: 80px;
     margin-left: 30px;
@@ -139,4 +162,4 @@ footer {
     font-weight: bold;
     border: none;
     cursor: pointer;
-    }
+}

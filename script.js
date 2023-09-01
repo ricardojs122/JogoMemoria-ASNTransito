@@ -1,5 +1,18 @@
-/*Fiz algumas coisas meio bagunçada qualquer cois só perguntar que tento explicar melhor */
-const cards = ["A", "A", "E", "E", "D", "D", "C", "C", "H", "G", "G", "H"];
+const cards = [
+    "assets/c1.jpg",
+    "assets/c2.jpg",
+    "assets/c3.jpg",
+    "assets/c4.jpg",
+    "assets/c5.jpg",
+    "assets/c6.jpg",
+    "assets/c1.jpg",
+    "assets/c2.jpg",
+    "assets/c3.jpg",
+    "assets/c4.jpg",
+    "assets/c5.jpg",
+    "assets/c6.jpg"
+];
+
 let flippedCards = [];
 let matches = 0;
 let isFlipping = false;
@@ -17,7 +30,6 @@ function shuffleArray(array) {
     }
 }
 
-
 function startGame(time) {
     clearInterval(timerInterval);
     remainingTime = time;
@@ -32,17 +44,33 @@ function createBoard() {
         const card = document.createElement("div");
         card.className = "card";
         card.dataset.index = i;
-        card.textContent = cards[i];
+
         card.addEventListener("click", handleCardClick);
+
+        const cardImageFront = document.createElement("img");
+        cardImageFront.src = cards[i]; 
+        cardImageFront.alt = "Card Front";
+        cardImageFront.classList.add("card-front");
+        card.appendChild(cardImageFront);
+
+        const cardBack = document.createElement("div");
+        cardBack.className = "card-back";
+        const cardImageBack = document.createElement("img");
+        cardImageBack.src = "assets/c-back.jpg";
+        cardImageBack.alt = "Card Back";
+        cardBack.appendChild(cardImageBack);
+        card.appendChild(cardBack);
+
         board.appendChild(card);
     }
+    console.log("Tabuleiro criado com sucesso.");
 }
 
 function handleCardClick() {
     if (isFlipping || flippedCards.includes(this) || flippedCards.length === 2) {
         return;
     }
-
+    console.log("Clique na carta.");
     flipCard(this);
 
     if (flippedCards.length === 2) {
@@ -52,26 +80,55 @@ function handleCardClick() {
 }
 
 function flipCard(card) {
-    card.classList.add("flipped");
-    flippedCards.push(card);
+    if (!card.classList.contains("flipped") && flippedCards.length < 2) {
+        card.classList.add("flipped");
+        console.log("Carta virada.");
+
+        const cardImageFront = card.querySelector(".card-front");
+        const cardImageBack = card.querySelector(".card-back");
+
+        if (cardImageFront.style.display === "none") {
+            cardImageFront.style.display = "block"; 
+            cardImageBack.style.display = "none";   
+        } else {
+            cardImageFront.style.display = "none";   
+            cardImageBack.style.display = "block";   
+        }
+
+        flippedCards.push(card);
+
+        if (flippedCards.length === 2) {
+            isFlipping = true;
+            setTimeout(checkForMatch, 1000);
+        }
+    }
 }
 
 function checkForMatch() {
     const [card1, card2] = flippedCards;
-    if (card1.textContent === card2.textContent) {
+    const cardImage1 = card1.querySelector("img");
+    const cardImage2 = card2.querySelector("img");
+    console.log("Verificando se há correspondência.");
+
+    if (cardImage1.src === cardImage2.src) {
         card1.removeEventListener("click", handleCardClick);
         card2.removeEventListener("click", handleCardClick);
         matches++;
+
         if (matches === cards.length / 2) {
             clearInterval(timerInterval);
             showCustomDialog("Parabéns! Você venceu!");
         }
     } else {
-        card1.classList.remove("flipped");
-        card2.classList.remove("flipped");
+        setTimeout(() => {
+            card1.classList.remove("flipped");
+            card2.classList.remove("flipped");
+            cardImage1.style.display = "none";
+            cardImage2.style.display = "none";
+            flippedCards = [];
+            isFlipping = false;
+        }, 1000);
     }
-    flippedCards = [];
-    isFlipping = false;
 }
 
 function updateTimer() {
