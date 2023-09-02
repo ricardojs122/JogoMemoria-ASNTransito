@@ -114,7 +114,7 @@ function checkForMatch() {
         const [card1, card2] = flippedCards;
         const cardImage1 = card1.querySelector(".card-front img");
         const cardImage2 = card2.querySelector(".card-front img");
-
+//Ele no console apresenta esse erro abaixo quando vira as cartas. 
         if (!cardImage1 || !cardImage2) {
             console.error("Erro: As imagens das cartas não foram encontradas.");
             return;
