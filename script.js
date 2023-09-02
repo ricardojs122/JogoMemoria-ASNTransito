@@ -41,8 +41,8 @@ function startGame(time) {
         button.classList.add('hide');
     });
 
-    const header = document.querySelector('header');
-    header.classList.add('hide');
+    // const header = document.querySelector('header');
+    // header.classList.add('hide');
 }
 
 function createBoard() {
@@ -59,14 +59,6 @@ function createBoard() {
         cardImageFront.alt = "Card Front";
         cardImageFront.classList.add("card-front");
         card.appendChild(cardImageFront);
-
-        const cardBack = document.createElement("div");
-        cardBack.className = "card-back";
-        const cardImageBack = document.createElement("img");
-        cardImageBack.src = "assets/c-back.jpg";
-        cardImageBack.alt = "Card Back";
-        cardBack.appendChild(cardImageBack);
-        card.appendChild(cardBack);
 
         board.appendChild(card);
     }
@@ -90,15 +82,10 @@ function flipCard(card) {
         console.log("Carta virada.");
 
         const cardImageFront = card.querySelector(".card-front");
-        const cardImageBack = card.querySelector(".card-back");
-
-        if (cardImageFront.style.display === "none") {
-            cardImageFront.style.display = "block"; 
-            cardImageBack.style.display = "none";   
-        } else {
-            cardImageFront.style.display = "none";   
-            cardImageBack.style.display = "block";   
-        }
+        if (cardImageFront.classList.contains('flipped'))
+            cardImageFront.classList.remove('flipped');
+        else
+            cardImageFront.classList.add('flipped');
 
         flippedCards.push(card);
 
@@ -110,10 +97,11 @@ function flipCard(card) {
 }
 //ACHO QUE SEJA ESTA LINHA DE CODIGO ABAIXO QUE ESTÁ COM O PROBLEMA DO BUG DE TRAVAR QUANDO ENCONTRA PAR IGUAIS
 function checkForMatch() {
+    console.log(flippedCards)
     if (flippedCards.length === 2) {
         const [card1, card2] = flippedCards;
-        const cardImage1 = card1.querySelector(".card-front img");
-        const cardImage2 = card2.querySelector(".card-front img");
+        const cardImage1 = card1.getElementsByTagName('img')[0];
+        const cardImage2 = card2.getElementsByTagName('img')[0];
 //Ele no console apresenta esse erro abaixo quando vira as cartas. 
         if (!cardImage1 || !cardImage2) {
             console.error("Erro: As imagens das cartas não foram encontradas.");
@@ -122,26 +110,22 @@ function checkForMatch() {
 
         const src1 = cardImage1.src;
         const src2 = cardImage2.src;
+        console.log(src1, src2)
 
         if (src1 === src2) {
             flippedCards = [];
             isFlipping = false;
+            matches++;
         } else {
             setTimeout(() => {
                 card1.classList.remove("flipped");
                 card2.classList.remove("flipped");
-                cardImage1.style.display = "none";
-                cardImage2.style.display = "none";
-                const cardImageBack1 = card1.querySelector(".card-back img");
-                const cardImageBack2 = card2.querySelector(".card-back img");
-                cardImageBack1.style.display = "block";
-                cardImageBack2.style.display = "block";
+                cardImage1.classList.remove("flipped");
+                cardImage2.classList.remove("flipped");
                 flippedCards = [];
                 isFlipping = false;
             }, 1000);
         }
-
-        matches++;
 
         if (matches === cards.length / 2) {
             clearInterval(timerInterval);
@@ -181,6 +165,7 @@ function showCustomDialog(message) {
     dialogContainer.appendChild(dialogContent);
     document.body.appendChild(dialogContainer);
 }
+
 function hideHeaderWithAnimation() {
     const header = document.getElementById("header");
     header.style.animation = "disappear 1s ease-in-out";
@@ -188,6 +173,7 @@ function hideHeaderWithAnimation() {
         header.style.display = "none";
     }, 1000);
 }
+
 function startGameWithAnimation(time) {
     hideHeaderWithAnimation();
     setTimeout(() => {

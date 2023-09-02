@@ -4,16 +4,22 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol {
 }
 
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Silkscreen', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     background-image: url(./assets/fundo1.jpg);    color: #ffffff;
     background-color:  rgb(20, 20, 20);
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+button {
+    font-family: 'Silkscreen', sans-serif;
+}
+
 h1 {
     margin-top: 20px;
 }
+
 footer {
     background-image: url(.assets/fundo1.jpg);
     color: #fffefe;
@@ -53,8 +59,22 @@ footer {
     transition: transform 0.3s ease-in-out;
 }
 
+div .card {
+    background: url('./assets/c-back.jpg');
+    background-size: contain;
+}
 
-.card .card-front,
+.flipped {
+    visibility: visible !important;
+}
+
+.card-front {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    visibility: hidden;
+}
+
 .card .card-back {
     position: absolute;
     width: 100%;
@@ -71,11 +91,11 @@ footer {
     max-width: 100%;
     max-height: 100%;
     display: block;
+    visibility: hidden;
 }
 
-
 .card.flipped {
-    transform: rotateY(180deg);
+    transform: rotateY(360deg);
 }
 
 .difficulty {
@@ -97,7 +117,7 @@ footer {
 .timer {
     margin-top: 20px;
     font-size: 18px;
-    color: #333;
+    color: white;
 }
 
 .easy {
@@ -129,7 +149,6 @@ footer {
     background-color: #a31225;
     transform: scale(1.05);
 }
-
 
 .custom-dialog {
     position: fixed;
@@ -163,6 +182,7 @@ footer {
     border: none;
     cursor: pointer;
 }
+
 @keyframes disappear {
     0% {
         opacity: 1;
@@ -173,6 +193,7 @@ footer {
         transform: translateY(-20px) scale(0.8);
     }
 }
+
 .hide {
     animation: disappear 0.6s ease-in-out forwards;
 }
