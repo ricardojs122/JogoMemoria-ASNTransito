@@ -59,7 +59,7 @@ footer {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    backface-visibility: visible;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,13 +133,13 @@ footer {
 
 .custom-dialog {
     position: fixed;
-    height: 70px;
+    height: 100px;
     width: 550px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);
-    border: 1px solid #ccc;
+    background: radial-gradient(ellipse at bottom, #ec44c2ff, #881d72ff, #411d6dff, #010005ff);
+    border: 1px solid #141414;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     color: #ffffff;
@@ -148,7 +148,7 @@ footer {
 
 .custom-dialog-content {
     text-align: center;
-    background: linear-gradient(59deg, rgba(10, 3, 41, 1) 10%, rgba(60, 36, 128, 1) 35%, rgba(238, 77, 202, 1) 100%);
+    
 }
 
 .custom-dialog button {
@@ -162,4 +162,17 @@ footer {
     font-weight: bold;
     border: none;
     cursor: pointer;
+}
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+    }
+}
+.hide {
+    animation: disappear 0.6s ease-in-out forwards;
 }

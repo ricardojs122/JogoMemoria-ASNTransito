@@ -7,7 +7,7 @@
     <title>Jogo da Memória</title>
 </head>
 <body>
-    <header>
+    <header id="header">
         <h1>Jogo da Memória - Arena Semana Nacional de Trânsito</h1>
     </header>
     <div></div>
@@ -17,9 +17,9 @@
     </main>
     
     <div class="difficulty">
-        <button class="easy" onclick="startGame(90)">Fácil</button>
-        <button class="medium" onclick="startGame(60)">Médio</button>
-        <button class="hard" onclick="startGame(5)">Difícil</button>
+        <button class="easy" onclick="startGameWithAnimation(90)">Fácil</button>
+        <button class="medium" onclick="startGameWithAnimation(60)">Médio</button>
+        <button class="hard" onclick="startGameWithAnimation(5)">Difícil</button>
     </div>
     
     <div class="timer" id="timer">Tempo restante: <span id="time">0:00</span></div>

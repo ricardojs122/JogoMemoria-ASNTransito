@@ -18,7 +18,6 @@ let matches = 0;
 let isFlipping = false;
 let timerInterval;
 let remainingTime;
-
 const board = document.getElementById("board");
 const timer = document.getElementById("timer");
 const timeDisplay = document.getElementById("time");
@@ -36,6 +35,14 @@ function startGame(time) {
     timerInterval = setInterval(updateTimer, 1000);
     shuffleArray(cards);
     createBoard();
+
+    const buttons = document.querySelectorAll('.difficulty button');
+    buttons.forEach(button => {
+        button.classList.add('hide');
+    });
+
+    const header = document.querySelector('header');
+    header.classList.add('hide');
 }
 
 function createBoard() {
@@ -65,7 +72,6 @@ function createBoard() {
     }
     console.log("Tabuleiro criado com sucesso.");
 }
-
 function handleCardClick() {
     if (isFlipping || flippedCards.includes(this) || flippedCards.length === 2) {
         return;
@@ -78,7 +84,6 @@ function handleCardClick() {
         setTimeout(checkForMatch, 1000);
     }
 }
-
 function flipCard(card) {
     if (!card.classList.contains("flipped") && flippedCards.length < 2) {
         card.classList.add("flipped");
@@ -103,31 +108,45 @@ function flipCard(card) {
         }
     }
 }
-//ACHO QUE SEJA ESTA LINHA DE CODIGO ABAIXO QUE ESTÁ COM O PROBLEMA DO BUG DE TRAVAR QUANDO ENCONTRA PAR IGUAIS 
+//ACHO QUE SEJA ESTA LINHA DE CODIGO ABAIXO QUE ESTÁ COM O PROBLEMA DO BUG DE TRAVAR QUANDO ENCONTRA PAR IGUAIS
 function checkForMatch() {
-    const [card1, card2] = flippedCards;
-    const cardImage1 = card1.querySelector("img");
-    const cardImage2 = card2.querySelector("img");
-    console.log("Verificando se há correspondência.");
+    if (flippedCards.length === 2) {
+        const [card1, card2] = flippedCards;
+        const cardImage1 = card1.querySelector(".card-front img");
+        const cardImage2 = card2.querySelector(".card-front img");
 
-    if (cardImage1.src === cardImage2.src) {
-        card1.removeEventListener("click", handleCardClick);
-        card2.removeEventListener("click", handleCardClick);
+        if (!cardImage1 || !cardImage2) {
+            console.error("Erro: As imagens das cartas não foram encontradas.");
+            return;
+        }
+
+        const src1 = cardImage1.src;
+        const src2 = cardImage2.src;
+
+        if (src1 === src2) {
+            flippedCards = [];
+            isFlipping = false;
+        } else {
+            setTimeout(() => {
+                card1.classList.remove("flipped");
+                card2.classList.remove("flipped");
+                cardImage1.style.display = "none";
+                cardImage2.style.display = "none";
+                const cardImageBack1 = card1.querySelector(".card-back img");
+                const cardImageBack2 = card2.querySelector(".card-back img");
+                cardImageBack1.style.display = "block";
+                cardImageBack2.style.display = "block";
+                flippedCards = [];
+                isFlipping = false;
+            }, 1000);
+        }
+
         matches++;
 
         if (matches === cards.length / 2) {
             clearInterval(timerInterval);
             showCustomDialog("Parabéns! Você venceu!");
         }
-    } else {
-        setTimeout(() => {
-            card1.classList.remove("flipped");
-            card2.classList.remove("flipped");
-            cardImage1.style.display = "none";
-            cardImage2.style.display = "none";
-            flippedCards = [];
-            isFlipping = false;
-        }, 1000);
     }
 }
 
@@ -162,5 +181,16 @@ function showCustomDialog(message) {
     dialogContainer.appendChild(dialogContent);
     document.body.appendChild(dialogContainer);
 }
-
-
+function hideHeaderWithAnimation() {
+    const header = document.getElementById("header");
+    header.style.animation = "disappear 1s ease-in-out";
+    setTimeout(() => {
+        header.style.display = "none";
+    }, 1000);
+}
+function startGameWithAnimation(time) {
+    hideHeaderWithAnimation();
+    setTimeout(() => {
+        startGame(time);
+    }, 1000); 
+}
