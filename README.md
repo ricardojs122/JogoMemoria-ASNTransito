@@ -34,9 +34,13 @@ Para executar o jogo, você precisa de um navegador da web moderno que suporte H
 
 Este projeto foi desenvolvido por:
 
-- Ricardo Melo ([GitHub](https://github.com/ricardojs122))
-- João Falcão ([GitHub](https://github.com/camalejao))
+- [Ricardo Melo](https://github.com/ricardojs122)
+  - GitHub: [GitHub](https://github.com/ricardojs122)
+  - LinkedIn: [LinkedIn](https://www.linkedin.com/in/ricardojs--/)
 
+- [João Falcão](https://github.com/camalejao)
+  - GitHub: [GitHub](https://github.com/camalejao)
+  - LinkedIn: [LinkedIn](https://www.linkedin.com/in/joaovictorfalcao/)
 ---
 
 <p align="center">
