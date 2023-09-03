@@ -4,15 +4,18 @@
 
 ## Descrição do Jogo
 
-Bem-vindo ao Jogo da Memória da Arena Semana Nacional de Trânsito! Este é um projeto simples, porém divertido, desenvolvido em HTML, CSS e JavaScript. O jogo desafia sua memória e concentração, enquanto você tenta encontrar pares correspondentes de cartas viradas para baixo.
+Bem-vindo ao Jogo da Memória da Arena Semana Nacional de Trânsito! Este é um projeto simples, mas envolvente, desenvolvido em HTML, CSS e JavaScript. O jogo desafia sua memória e concentração, enquanto você tenta encontrar pares correspondentes de cartas viradas para baixo.
 
 ## Funcionalidades
 
-- **Embaralhamento Aleatório**: As cartas são embaralhadas aleatoriamente no início do jogo, garantindo que cada partida seja única.
+### Embaralhamento Aleatório
+As cartas são embaralhadas aleatoriamente no início do jogo, garantindo que cada partida seja única.
 
-- **Contagem Regressiva de Tempo**: Um relógio de contagem regressiva adiciona um elemento de desafio, testando sua agilidade mental.
+### Contagem Regressiva de Tempo
+Um relógio de contagem regressiva adiciona um elemento de desafio, testando sua agilidade mental.
 
-- **Detecção de Pares Correspondentes**: O jogo detecta automaticamente quando você encontrou pares correspondentes, mantendo o controle do seu progresso.
+### Detecção de Pares Correspondentes
+O jogo detecta automaticamente quando você encontrou pares correspondentes, mantendo o controle do seu progresso.
 
 ## Como Jogar
 
@@ -37,12 +40,12 @@ Para jogar o jogo, basta ter um navegador da web moderno que suporte HTML5, CSS3
 Este projeto foi cuidadosamente desenvolvido por:
 
 - **Ricardo Melo**
-  - [GitHub](https://github.com/ricardojs122)
-  - [LinkedIn](https://www.linkedin.com/in/ricardojs--/)
+  - [![GitHub](https://img.shields.io/badge/GitHub-ricardojs122-blue)](https://github.com/ricardojs122)
+  - [![LinkedIn](https://img.shields.io/badge/LinkedIn-ricardojs--blue)](https://www.linkedin.com/in/ricardojs--/)
 
 - **João Falcão**
-  - [GitHub](https://github.com/camalejao)
-  - [LinkedIn](https://www.linkedin.com/in/joaovictorfalcao/)
+  - [![GitHub](https://img.shields.io/badge/GitHub-camalejao-blue)](https://github.com/camalejao)
+  - [![LinkedIn](https://img.shields.io/badge/LinkedIn-joaovictorfalcao-blue)](https://www.linkedin.com/in/joaovictorfalcao/)
 
 ---
 
