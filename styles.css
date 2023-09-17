@@ -37,8 +37,8 @@ footer {
 
 .board {
     display: grid;
-    grid-template-columns: repeat(4, 100px); 
-    grid-template-rows: repeat(3, 100px); 
+    grid-template-columns: repeat(6, 100px); 
+    grid-template-rows: repeat(4, 100px); 
     gap: 10px;
 }
 

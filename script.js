@@ -47,6 +47,7 @@ function startGame(time) {
 
 function createBoard() {
     board.innerHTML = "";
+    board.innerHTML = document.getElementById("mapeamento").innerHTML;
     for (let i = 0; i < cards.length; i++) {
         const card = document.createElement("div");
         card.className = "card";
